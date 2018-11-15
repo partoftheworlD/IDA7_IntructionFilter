@@ -11,7 +11,7 @@ def range_reverse(start, stop):
         if i < start and i >= stop:
             yield i
 
-print "\n\n     Addr |      Offset |        Instruction |"
+print "\n\n     Addr |              Instruction |"
 print "-"*46
 for j in stack_view:         
     current_function = idaapi.get_func(j)
