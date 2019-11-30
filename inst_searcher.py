@@ -21,11 +21,12 @@ class Func(object):
     def run(self):
         if self.stack_view:
             for j in self.stack_view:
-                current_function = idaapi.get_func(j)
                 print "-" * 46
-                for j in [i for i in self.range_reverse(current_function.endEA, current_function.startEA)]:
-                    if self.reg_value.findall(idc.GetDisasm(j)):
-                        print("0x{} -- {}".format(hex(j)[2:].replace("L", "").upper(), idc.GetDisasm(j)))
+                current_function = idaapi.get_func(j)
+                if current_function:
+                    for j in [i for i in self.range_reverse(current_function.endEA, current_function.startEA)]:
+                        if self.reg_value.findall(idc.GetDisasm(j)):
+                            print("0x{} -- {}".format(hex(j)[2:].replace("L", "").upper(), idc.GetDisasm(j)))
         else:
             print "Please input addresses to stack view buffer"
             pass
