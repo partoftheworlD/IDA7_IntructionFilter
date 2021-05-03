@@ -21,14 +21,14 @@ class Func(object):
     def run(self):
         if self.stack_view:
             for j in self.stack_view:
-                print "-" * 46
+                print("-" * 46)
                 current_function = idaapi.get_func(j)
                 if current_function:
-                    for j in [i for i in self.range_reverse(current_function.endEA, current_function.startEA)]:
+                    for j in [i for i in self.range_reverse(current_function.end_ea, current_function.start_ea)]:
                         if self.reg_value.findall(idc.GetDisasm(j)):
                             print("0x{} -- {}".format(hex(j)[2:-1].upper(), idc.GetDisasm(j)))
         else:
-            print "Please input addresses to stack view buffer"
+            print("Please input addresses to stack view buffer")
             pass
 
 
