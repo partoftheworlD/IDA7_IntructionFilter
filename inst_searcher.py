@@ -26,7 +26,7 @@ class Func(object):
                 if current_function:
                     for j in [i for i in self.range_reverse(current_function.end_ea, current_function.start_ea)]:
                         if self.reg_value.findall(idc.GetDisasm(j)):
-                            print("0x{} -- {}".format(hex(j)[2:-1].upper(), idc.GetDisasm(j)))
+                            print("0x{} -- {}".format(hex(j)[2:].upper(), idc.GetDisasm(j)))
         else:
             print("Please input addresses to stack view buffer")
             pass
